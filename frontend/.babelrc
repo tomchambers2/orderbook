@@ -1,7 +1,0 @@
-{
-    "presets": [
-        // FIXME: why these?
-        "@babel/preset-env",
-        "@babel/preset-react"
-    ]
-}

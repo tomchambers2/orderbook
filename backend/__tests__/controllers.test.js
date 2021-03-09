@@ -1,7 +1,7 @@
 const {
   placeOrder,
   cancelOrder,
-  getOrderBook,
+  getOrderbook,
   getOrdersForUser,
 } = require("../controllers");
 
@@ -12,7 +12,7 @@ let mockResponse = {};
 beforeEach(() => {
   db.addData = jest.fn();
   db.removeData = jest.fn();
-  db.getOrderBook = jest.fn();
+  db.getOrderbook = jest.fn();
   db.getOrdersForUser = jest.fn();
   db.query = jest.fn();
   mockResponse.json = jest.fn();
@@ -46,7 +46,7 @@ it("get a list of all orders", () => {
     { userId: 1, price: 100, side: "buy", amount: 10 },
     { userId: 2, price: 50, side: "sell", amount: 10 },
   ]);
-  getOrderBook({}, mockResponse);
+  getOrderbook({}, mockResponse);
   expect(db.query).toHaveBeenCalledTimes(1);
   expect(mockResponse.json).toHaveBeenCalledWith({
     result: [

@@ -1,15 +1,16 @@
+const express = require("express");
 const {
   placeOrder,
   cancelOrder,
-  getOrderBook,
+  getOrderbook,
   getOrdersForUser,
-} = require("../controllers");
+} = require("./controllers");
 const router = express.Router();
 
 router.post("/placeOrder", placeOrder);
-router.put("/cancelOrder", cancelOrder);
-router.get("/getOrderBook", getOrderBook);
-router.get("/getOrdersForUser", getOrdersForUser);
+router.delete("/cancelOrder/:orderId", cancelOrder);
+router.get("/getOrderbook", getOrderbook);
+router.get("/getOrdersForUser/:userId", getOrdersForUser);
 
 module.exports = {
   router,
