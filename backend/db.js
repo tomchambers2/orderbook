@@ -13,7 +13,7 @@ module.exports = {
     return (data[id] = null);
   },
 
-  query: ({ userId, orderId }) => {
+  query: ({ userId, orderId } = {}) => {
     const dataWithId = data
       .filter(Boolean)
       .map((data, i) => ({ ...data, orderId: i }));
