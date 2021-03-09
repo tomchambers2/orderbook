@@ -18,11 +18,11 @@ beforeEach(() => {
   mockResponse.json = jest.fn();
 });
 
-test("place order and return ID", () => {
+it("places an order and return ID", () => {
   db.addData = jest.fn(() => 123);
 
   placeOrder(
-    { data: { userId: 1, price: 100, side: "buy", amount: 10 } },
+    { body: { userId: 1, price: 100, side: "buy", amount: 10 } },
     mockResponse
   );
 
@@ -35,13 +35,14 @@ test("place order and return ID", () => {
   expect(mockResponse.json).toHaveBeenCalledWith({ result: 123 });
 });
 
-it("cancel an order using the ID", () => {
+it("cancels an order using the ID", () => {
+  db.query = jest.fn(() => ({ side: "ask", amount: 11, price: 11 }));
   db.removeData = jest.fn(() => true);
-  cancelOrder({ data: { orderId: 1 } }, mockResponse);
+  cancelOrder({ params: { orderId: 1 } }, mockResponse);
   expect(mockResponse.json).toHaveBeenCalledWith({ result: "success" });
 });
 
-it("get a list of all orders", () => {
+it("gets a list of all orders", () => {
   db.query = jest.fn(() => [
     { userId: 1, price: 100, side: "buy", amount: 10 },
     { userId: 2, price: 50, side: "sell", amount: 10 },
@@ -56,11 +57,11 @@ it("get a list of all orders", () => {
   });
 });
 
-it("get a list of all orders", () => {
+it("gets a list of all orders for the specified user", () => {
   db.query = jest.fn(() => [
     { userId: 1, price: 100, side: "buy", amount: 10 },
   ]);
-  getOrdersForUser({ data: { userId: 1 } }, mockResponse);
+  getOrdersForUser({ params: { userId: 1 } }, mockResponse);
   expect(db.query).toHaveBeenCalledWith(1);
   expect(mockResponse.json).toHaveBeenCalledWith({
     result: [{ userId: 1, price: 100, side: "buy", amount: 10 }],

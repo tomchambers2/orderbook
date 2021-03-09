@@ -67,8 +67,20 @@ export const App = () => {
         <div className="right-panel">
           <div className="orders panel">
             <h2>Open orders</h2>
+            <h3>Buying</h3>
             {orders
               .slice()
+              .filter(({ side }) => side === "bid")
+              .reverse()
+              .map(({ side, price, amount }) => (
+                <li>
+                  {side} @ {price}, {amount}
+                </li>
+              ))}
+            <h3>Selling</h3>
+            {orders
+              .slice()
+              .filter(({ side }) => side === "ask")
               .reverse()
               .map(({ side, price, amount }) => (
                 <li>

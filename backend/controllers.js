@@ -2,7 +2,6 @@ const db = require("./db");
 
 module.exports = {
   placeOrder: (req, res) => {
-    console.log(req.body);
     const { userId, price, amount, side } = req.body;
     const result = db.addData({ userId, price, amount, side });
     res.json({ result });
