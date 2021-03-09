@@ -1,0 +1,22 @@
+.app {
+  width: 100%;
+}
+
+.user {
+  width: 100%;
+}
+
+.panel {
+  border: 1px solid black;
+  padding: 10px;
+  margin: 10px;
+}
+
+.panels {
+  display: flex;
+}
+
+.left-panel,
+.right-panel {
+  width: 50%;
+}
