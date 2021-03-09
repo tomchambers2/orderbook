@@ -20,7 +20,7 @@ module.exports = {
   },
   getOrdersForUser: (req, res) => {
     const { userId } = req.params;
-    const result = db.query(userId);
+    const result = db.query({ userId });
     res.json({ result });
   },
 };
