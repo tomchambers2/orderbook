@@ -26,6 +26,7 @@ yarn test
 4. Performance - paginate the requests to the backend/lazy loading infinite scroll
 5. Live updating - ideally using websockets for successful/failed data. I considered optimistically updating the state but this didn't seem right for a financial application where certainty is important
 6. Simple DB doesn't work well for querying
+7. More frontend tests - only had time to test the User component - would write tests for the others as well
 
 # Other small things to do
 
