@@ -7,6 +7,7 @@
 3. Form validation
 4. Performance - paginate the requests to the backend/lazy loading infinite scroll
 5. Live updating - ideally using websockets for successful/failed data. I considered optimistically updating the state but this didn't seem right for a financial application where certainty is important
+6. Realised DB impmentation hopelessly naive even for the simple case - particularly for being able to query
 
 # Other small things to do
 

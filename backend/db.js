@@ -13,12 +13,20 @@ module.exports = {
     return (data[id] = null);
   },
 
-  query: ({ userId }) => {
+  query: ({ userId, orderId }) => {
     const dataWithId = data
       .filter(Boolean)
       .map((data, i) => ({ ...data, orderId: i }));
-    return userId
-      ? dataWithId.filter(({ userId: userIdData }) => userId === userIdData)
-      : dataWithId;
+    if (userId) {
+      return dataWithId.filter(
+        ({ userId: userIdData }) => userId === userIdData
+      );
+    }
+    if (orderId) {
+      return dataWithId.filter(
+        ({ orderId: orderIdData }) => orderId === orderIdData
+      );
+    }
+    return data;
   },
 };
